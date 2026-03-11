@@ -21,6 +21,13 @@
         <h2>Sign Up</h2>
 
         <form action="/sign-up" method="post">
+            <% if (locals.errors) {%>
+                <ul>
+                  <% errors.forEach(function(error) { %>
+                    <li><%= error.msg %></li>
+                  <% }); %>
+                </ul>
+            <% } %>
             <p>
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username">

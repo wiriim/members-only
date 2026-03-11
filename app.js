@@ -1,6 +1,7 @@
 const express = require('express');
-const app = new express();
 const path = require("node:path");
+const app = new express();
+app.use(express.urlencoded({ extended: false }));
 
 // Configuting view with ejs
 app.set("views", path.join(__dirname, "Views"));
