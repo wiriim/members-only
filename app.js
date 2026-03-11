@@ -11,7 +11,9 @@ const assetPath = path.join(__dirname, "Public");
 app.use(express.static(assetPath));
 
 // Routes
+const singUpRouter = require('./Routes/sign-up');
 app.get('/', (req, res) => res.render('home'));
+app.use('/sign-up', singUpRouter);
 
 // Running / Listening the application
 const DEFAULT_PORT = process.env.DEFAULT_PORT;

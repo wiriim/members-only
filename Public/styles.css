@@ -56,3 +56,18 @@ section .card{
     margin: 10px 0;
     color: rgb(205, 203, 203);
 }
+
+form p{
+    margin: 1rem 0;
+}
+
+form input{
+    display: block;
+    padding: 5px;
+    font-family: "Nunito", sans-serif;
+}
+
+form button{
+    padding: 5px;
+    font-family: "Nunito", sans-serif;
+}
