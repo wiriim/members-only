@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 2rem;
+    background-color: rgb(59, 93, 123);
+    color: white;
+    font-family: "Nunito", sans-serif;;
+}
+
+nav{
+    margin: 2rem 0;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a{
+    color: rgb(224, 223, 223);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+nav a:hover{
+    color: white;
+}
+
+section h2{
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+section .messages{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+}
+
+section .card{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 350px;
+    background-color: rgb(39, 62, 82);
+}
+
+.author{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.date{
+    margin: 10px 0;
+    color: rgb(205, 203, 203);
+}
