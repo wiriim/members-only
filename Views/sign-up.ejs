@@ -11,9 +11,13 @@
     <h2>Share your experience, feelings, or even secrets~.</h2>
     <nav>
         <a href="/">Home</a>
-        <a href="/sign-up">Sign Up</a>
-        <a href="/login">Login</a>
-        <a href="">Create New Message</a>
+        <% if (locals.user) { %>
+            <a href="/logout">Logout</a>
+            <a href="">Create New Message</a>
+        <% } else { %>
+            <a href="/sign-up">Sign Up</a>
+            <a href="/login">Login</a>
+        <% } %>
     </nav>
 
     

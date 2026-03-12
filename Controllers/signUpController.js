@@ -1,5 +1,6 @@
 const { body, validationResult, matchedData } = require("express-validator");
 const queries = require('../Database/queries');
+const bcrypt = require('bcryptjs');
 
 function getSignUpPage(req, res){
     res.render('sign-up');
@@ -20,7 +21,8 @@ async function signUp(req, res){
         });
     }
 
-    const { username, email, password } = matchedData(req);
+    let { username, email, password } = matchedData(req);
+    password = await bcrypt.hash(password, 10);
     await queries.signUp(username, email, password);
     res.redirect('/');
 }
