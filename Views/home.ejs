@@ -11,29 +11,34 @@
     <h2>Share your experience, feelings, or even secrets~.</h2>
     <nav>
         <a href="/">Home</a>
-        <% if (locals.user) { %>
+        <% if (user) { %>
             <a href="/logout">Logout</a>
-            <a href="">Create New Message</a>
+            <form action="/createmsg" style="display: flex; align-items: center; gap: 10px;">
+                <label for="message">Create New Message: </label>
+                <input type="text" id="message" name="message">
+                <button>Create</button>
+            </form>
         <% } else { %>
             <a href="/sign-up">Sign Up</a>
             <a href="/login">Login</a>
         <% } %>
     </nav>
-    
+
     <section>
         <h2>What do we have here?</h2>
 
         <div class="messages">
-            <div class="card">
-                <div class="author">William</div>
-                <div class="date">13-02-2027</div>
-                <div class="message">I Looove Ice Cream! Anyone ever tried the taste of bubblegum ice cream? Incredible!</div>
-            </div>
-            <div class="card">
-                <div class="author">William</div>
-                <div class="date">13-02-2027</div>
-                <div class="message">I Looove Ice Cream! Anyone ever tried the taste of bubblegum ice cream? Incredible!</div>
-            </div>
+            <% rows.forEach(row => { %>
+                <div class="card">
+                    <% if (user) {%>
+                        <div class="author"><%= row.username %></div>
+                        <div class="date"><%= row.created_date.toLocaleDateString('en-GB') %></div>
+                    <% }else{ %>
+                        <div class="author">Anonymous</div>
+                    <% } %>
+                    <div class="message"><%= row.message %></div>
+                </div> 
+            <% }); %>
         </div>
         
     </section>

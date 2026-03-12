@@ -18,10 +18,11 @@ app.use(express.static(assetPath));
 // Routes
 const singUpRouter = require('./Routes/sign-upRouter');
 const loginRouter = require('./Routes/loginRouter');
-app.get('/', (req, res) => {
+const query = require('./Database/queries');
+app.get('/', async (req, res) => {
     res.locals.user = req.user;
-    console.log(req.user)
-    res.render('home');
+    const rows = await query.getAllMsg();
+    res.render('home', {rows});
 });
 app.get('/logout', (req, res) => {
     req.logout((err) => {
@@ -31,6 +32,10 @@ app.get('/logout', (req, res) => {
 })
 app.use('/sign-up', singUpRouter);
 app.use('/login', loginRouter);
+app.get('/createmsg', async (req, res) => {
+    await query.createmsg(req.query.message, new Date(), req.user.id);
+    res.redirect('/');
+});
 
 // Running / Listening the application
 const DEFAULT_PORT = process.env.DEFAULT_PORT;
